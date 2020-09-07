@@ -11,8 +11,16 @@ ENV NVIDIA_VISIBLE_DEVICES=all \
     LANG=C.UTF-8
 
 RUN mkdir /gpt-2
+ADD *.py /gpt-2/
+ADD requirements.txt /gpt-2/
+RUN mkdir /gpt-2/src
+ADD src/ /gpt-2/src
+RUN mkdir /gpt-2/models
+ADD models/ /gpt-2/models
+RUN mkdir /gpt-2/data
+ADD data/ /gpt-2/data
 WORKDIR /gpt-2
-ADD . /gpt-2
+
 RUN pip3 install -r requirements.txt
-RUN python3 download_model.py 117M
-RUN python3 download_model.py 345M
+#RUN python3 download_model.py 117M
+#RUN python3 download_model.py 345M
